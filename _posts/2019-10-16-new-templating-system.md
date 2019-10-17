@@ -4,7 +4,7 @@ title: "Simplifying templates in ComplianceAsCode"
 categories: template
 author: Jan Černý
 ---
-In ComplianceAsCode content project there are many similar rules. But we don’t like to duplicate code and we discourage copy-pasting. Instead, we prefer to generate content (e.g: OVAL, Ansible, Bash, etc.) using templates. Lately, we have changed the way these templates work. This change made using templates easier for the content authors.
+In ComplianceAsCode content project, there are many similar rules. But we don’t like to duplicate code and we discourage copy-pasting. Instead, we prefer to generate content (e.g: OVAL, Ansible, Bash, etc.) using templates. Lately, we have changed the way these templates work. This change made using templates easier for the content authors.
 
 In this article, we will describe the reasons for this change and we will show how to use the new templating system.
 
@@ -12,12 +12,12 @@ In this article, we will describe the reasons for this change and we will show h
 
 The old system was working, and it was definitely a big improvement over copy-pasting the code. But it had multiple problems.
 
-First problem was that the `CSV` files which contained parameters for the templates were located at other directories than the rule.yml files. This wasn’t convenient because contributors had to browse the directory tree to find the right `CSV` file. Moreover, there was a different set of files in each product (e.g: RHEL8, RHEL7, Fedora, etc.). And there were many `CSV` files in shared directory as well, shared within multiple products. For example there was a file with data for a template which generates content for mount options checks in the shared directory, in RHEL 7 product directory and in RHEL 8 product directory as well:
+First problem was that the `CSV` files which contained parameters for the templates were located at other directories than the `rule.yml` files. This wasn’t convenient because contributors had to browse the directory tree to find the right `CSV` file. Moreover, there was a different set of files in each product (e.g: RHEL8, RHEL7, Fedora, etc.). And there were many `CSV` files in shared directory as well, shared within multiple products. For example, there was a file with data for a template which generates content for mount options checks in the `shared` directory, in the RHEL 7 product directory, and in the RHEL 8 product directory as well:
  - [Shared mount_options.csv](https://github.com/ComplianceAsCode/content/blob/54aa23363d7569b3f8f432d1732d2cb68cf5e5a0/shared/templates/csv/mount_options.csv)
  - [RHEL8 mount_options.csv](https://github.com/ComplianceAsCode/content/blob/54aa23363d7569b3f8f432d1732d2cb68cf5e5a0/rhel8/templates/csv/mount_options.csv)
  - [RHEL7 mount_options.csv](https://github.com/ComplianceAsCode/content/blob/54aa23363d7569b3f8f432d1732d2cb68cf5e5a0/rhel7/templates/csv/mount_options.csv)
 
-These multiple CSV files mostly weren’t kept consistent. The fact that some data are specific for a given product also complicated the creation of a new product content because new CSVs had to be created again.
+These multiple `CSV` files mostly weren’t kept consistent. The fact that some data are specific for a given product also complicated the creation of a new product content because new CSVs had to be created again.
 
 There wasn’t any visible connection between the rules and the templates. When there was no `oval` or `ansible` subdirectories in the rule directory, it could mean that the rule is templated, but that could also mean that no content for that rule exists complicating pull request reviews. The build system generated content from `CSV` files with no respect to rules. The generated content was mapped to rules later in the build process based on IDs. The CSVs contained many lines that weren’t related to any rule in the currently built product, which means that a lot of content was generated and then dropped later in the build process.
 
@@ -25,11 +25,11 @@ From another point of view, there was also no connection from the `CSV` files to
 
 Also, there was a big portion of complex code that populated the templates and processed the template data. There was a special `Python` class for each `CSV` file and the for each of them the behavior was different. Some classes generated content for multiple rules from a single CSV entry at once. For example, from each line in `CSV` `file_dir_permissions.csv` up to four OVAL files could be generated, each of them for a different `XCCDF` rule, but one of them was never used.
 
-The introducing of templates was considered a great improvement at that time but its implementation had a lot of quirks. We wanted to provide something more straightforward and easier to use.
+Introduction of templates was considered a great improvement at that time but its implementation had a lot of quirks. We wanted to provide something more straightforward and easier to use.
 
 ### New approach
 
-The main change is that the templates are now based on rules and are integrated into the YAML rule file. To use a template we can specify “template” key under the `rule.yml` file when creating a new rule. We simply provide the name of template and the parameters directly under `rule.yml`. And we don’t need to edit any others files than the `rule.yml` file. 
+The main change is that the templates are now rule-centric, and are integrated into the YAML rule file. To use a template we can specify the `template` key in the `rule.yml` file when creating a new rule. We simply provide the name of template and the parameters directly under `rule.yml` and that's it - we don’t need to edit any others files.
 
 Making templates dependent on rules also means that we can easily check if a rule generates templated content just by checking if the `rule.yml` file contains a `template` key. In the past we had to examine all the `CSV` files.
 
