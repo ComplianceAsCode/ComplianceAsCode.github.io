@@ -2,6 +2,7 @@
 layout: post
 title: "Simplifying templates in ComplianceAsCode"
 categories: template
+author: Jan Černý
 ---
 In ComplianceAsCode content there are many similar rules. But we don’t like duplicate code and we discourage copy-pasting. Instead, we prefer to generate OVAL checks, Ansible and Bash code using templates. Lately, we have changed the way these templates work. This change makes using the templates easier for the content authors.
 
@@ -12,9 +13,9 @@ In this article, we will describe the reasons for this change and we will show u
 The old system was working, and it definitely was a big improvement over copy-pasting the code.  But it had multiple problems.
 
 First problem was that the CSV files which contained parameters for the templates were located at other directories than the rule.yml files. This wasn’t convenient because contributors have to  browse the directory tree to find the right CSV file. Moreover, there was a different set of files in each product (rhel6, rhel7, fedora, etc.)  And there were many CSV files in shared directory as well, shared within multiple products. For example there is a file with data for template which generates content check in for mount options in shared directory, in RHEL 7 product directory and in RHEL 8 product directory as well: 
- - [Example 1](https://github.com/ComplianceAsCode/content/blob/master/shared/templates/csv/mount_options.csv)
- - [Example 2](https://github.com/ComplianceAsCode/content/blob/master/rhel8/templates/csv/mount_options.csv)
- - [Example 3](https://github.com/ComplianceAsCode/content/blob/master/rhel7/templates/csv/mount_options.csv)
+ - [Shared mount_options.csv](https://github.com/ComplianceAsCode/content/blob/54aa23363d7569b3f8f432d1732d2cb68cf5e5a0/shared/templates/csv/mount_options.csv)
+ - [RHEL8 mount_options.csv](https://github.com/ComplianceAsCode/content/blob/54aa23363d7569b3f8f432d1732d2cb68cf5e5a0/rhel8/templates/csv/mount_options.csv)
+ - [RHEL7 mount_options.csv](https://github.com/ComplianceAsCode/content/blob/54aa23363d7569b3f8f432d1732d2cb68cf5e5a0/rhel7/templates/csv/mount_options.csv)
 
 The multiple CSV files mostly weren’t kept consistent. The fact that some data are specific for product also complicated the creation of a new product content because new CSVs have to be created again.
 
