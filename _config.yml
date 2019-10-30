@@ -18,7 +18,7 @@ title: Compliance As Code Blog
 description: >- # this means to ignore newlines until "baseurl:"
   The Compliance As Code Blog 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://complianceascode.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: openscap 
 github_username: ComplianceAsCode
 
@@ -28,6 +28,8 @@ theme: minima
 plugins:
   - jekyll-feed
 
+disqus:
+  shortname: complianceascode
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
