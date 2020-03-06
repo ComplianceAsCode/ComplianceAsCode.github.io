@@ -17,7 +17,7 @@ Answering the original question about profile's state is made more tricky due to
 ComplianceAsCode uses the YAML format for profile definitions, so profile creators often group rules by policy requirements, and add a lot of comments why a specific rule is selected by the profile.
 As a result, profile definitions can end up having hundreds of lines.
 When you consider the ability of profiles to extend an existing profile, it's really difficult to keep track of profile composition over time.
-Ultimately, one can analyze the datastream and examine selections there, but one could object to that, as the build system at one point knows what's selected and what's not.
+Ultimately, one can analyze the datastream and examine selections there. But, the build system knows what's selected and what's not. We can use the build system to show this information instead of analysing a complex XML file.
 
 See, for example, a snippet of RHEL8's OSPP profile:
 
