@@ -63,13 +63,6 @@ If selections differ, the test fails, and a helpful message is displayed.
 In order to make the test passing again, one can update the reference easily by overwriting it with the build artifact, and the change in the reference should have a really simple diff that is easy to review.
 
 
-## Conclusion
-
-If you are a profile developer and you want to have a strong control over your profile, consider adding the compiled profile to the test directory.
-If there are legitimate updates of dependent profiles, your test reference will be overwritten, so those legitimate changes aren't blocked.
-However, you can watch the history of the reference, and react to its changes - every change of an extended profile can be neutralized by adding selections, adding unselections, or overriding variables or refinements to their original values.
-
-
 ## Check it out
 
 Let's try to modify a guarded profile, then build the content, and execute tests.
@@ -118,6 +111,7 @@ $ ./build_product rhel8
 
 Finally, after the build finishes, let's run the test in verbose mode.
 Test's name is `stable-profiles`, and we can use ctest's `-R` option to run only that single test.
+The `ctest` invocation has to be executed from the build directory, so we change to it first:
 
 ```
 $ cd build
@@ -160,3 +154,10 @@ Please note that parts of the output were skipped and substituted by ellipsis (i
 
 If you perform suggested copy commands and re-run tests, they then pass.
 However, when you submit a pull request with all files changed, there won't be any doubt that those rules were removed from the profile, even if the change is part of a mass rearranging of the `ospp.profile` file.
+
+
+## Conclusion
+
+If you are a profile developer and you want to have a strong control over your profile, consider adding the compiled profile to the test directory.
+If there are legitimate updates of dependent profiles, your test reference will be overwritten, so those legitimate changes aren't blocked.
+However, you can watch the history of the reference, and react to its changes - every change of an extended profile can be neutralized by adding selections, adding unselections, or overriding variables or refinements to their original values.
