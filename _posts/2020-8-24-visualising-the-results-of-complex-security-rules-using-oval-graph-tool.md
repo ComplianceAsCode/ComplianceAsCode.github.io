@@ -99,8 +99,8 @@ You can read more about generating ARF report files using OpenSCAP in the OpenSC
 
 Here is a live demo of the generated file. This graph is interactive. You can
 
-* hide part of the rule criteria tree, or
-* display any information about the test in the rule.
+* hide part of the rule criteria tree
+* display any information about the test in the rule
 
 Thanks to the graph we can see in the blink of an eye where the problem is.
 
