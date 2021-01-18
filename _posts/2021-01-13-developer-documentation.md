@@ -32,6 +32,13 @@ ComplianceAsCode content project contains many documentation pieces spread all o
 
 Each of them reflects the contents of their respective documentation present on ComplianceAsCode content project. Whenever a change is made in the project's documentation, it is automatically reflected in the [complianceascode.readthedocs.io](https://complianceascode.readthedocs.io). And for each new release of ComplianceAsCode content project, a new tagged version of the documentation is created.
 
+#### Build the Documentation Locally
+
+If you would like to build the documentation locally, whether to access it offline or to contribute back, you can do it by following these instructions:
+
+- [Install Sphinx Packages](https://complianceascode.readthedocs.io/en/latest/manual/developer/02_building_complianceascode.html#installing-build-dependencies)
+- [Generate HTML documentation](https://github.com/ComplianceAsCode/content/tree/master/shared)
+
 ### Conclusion
 
 Whether you are getting acquainted with the project or are a long term developer, this documentation transition to `Read the Docs` has brought many benefits. Contributors can now effectively consult the documentation and focus more on developing security content. Go ahead and check it out at [complianceascode.readthedocs.io](https://complianceascode.readthedocs.io) if you haven't done so and don't forget to bookmark it.
