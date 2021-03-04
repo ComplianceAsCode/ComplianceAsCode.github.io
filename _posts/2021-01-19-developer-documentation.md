@@ -36,8 +36,8 @@ Each of them reflects the contents of their respective documentation present on 
 
 If you would like to build the documentation locally, whether to access it offline or to contribute back, you can do it by following these instructions:
 
-- [Install Sphinx Packages](https://complianceascode.readthedocs.io/en/latest/manual/developer/02_building_complianceascode.html#installing-build-dependencies)
-- [Generate HTML documentation](https://github.com/ComplianceAsCode/content/tree/master/shared)
+- [Install Sphinx Packages](https://complianceascode.readthedocs.io/en/latest/manual/developer/02_building_complianceascode.html#sphinx-packages-developer-documentation)
+- [Generate HTML documentation](https://complianceascode.readthedocs.io/en/latest/manual/developer/02_building_complianceascode.html#generating-sphinx-documentation)
 
 ### Conclusion
 
