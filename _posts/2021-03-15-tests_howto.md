@@ -21,9 +21,9 @@ Many of them are templated, i.e. they are slight variations of one principle, bu
 Therefore, making sure that even rules that are used by a given product are correct is tough to scale - that means verifying tens to hundreds of rules.
 
 So how do we do it in the project?
-As you can learn very quickly by visiting the [tests](https://github.com/ComplianceAsCode/content/tree/master/tests#readme) folder, the project features a test suite.
-There is everything in it, but let's just skim through the simplest use cases that will likely get you covered:
-
+As you can learn very quickly by visiting the [tests](https://github.com/ComplianceAsCode/content/tree/master/tests) folder, the project features a test suite.
+The test suite is described in [README](https://github.com/ComplianceAsCode/content/blob/master/tests/README.md) located in this directory.
+There is everything in it, but let's just skim through the simplest use cases that will likely get you covered.
 
 The Test Suite
 --------------
@@ -52,8 +52,8 @@ Testing as an unprivileged user
 -------------------------------
 
 Since `podman` became a standard part of Linux distributions, one can build and run containers locally without additional privileges, so let's see how such test can look like.
-First of all, we will need a test environment.
-The project already contains predefined recipes, so let's leverage them, and build the test container:
+First of all, we will need a testing environment.
+The project already contains tools to set up a testing environment, so let's leverage them, and build a container:
 
 ```shell
 $ tests/build_test_container.sh
@@ -61,7 +61,7 @@ $ tests/build_test_container.sh
 
 That's it, the script builds a Fedora-based test container image called `ssg_test_suite` by default, which can get us quite far, as you will see.
 The script offers options to customize its behavior - simply call `tests/build_test_container.sh -h` to see how.
-If the selection of flavors caught your eye, those have to be in line with contents of the [Dockerfiles](https://github.com/ComplianceAsCode/content/tree/master/Dockerfiles) directory, specifically to `test_suite-...` recipes.
+If the selection of flavors caught your eye, those have to be in line with contents of the [Dockerfiles](https://github.com/ComplianceAsCode/content/tree/master/Dockerfiles) directory, specifically to `test_suite-...` files.
 However, you can use a Fedora-based image to test many rules even if you are a Debian content developer.
 
 Next, we build the content that we would like to test - so let's dare and test a rule in the RHEL7 context.
@@ -138,7 +138,7 @@ Precisely, we test the ability of the remediation to satisfy the OVAL check - th
 - Inside, we see that there is a line containing `# variables = var_accounts_tmout=600` - that indicates that the rule is parametrized, and we force the value of the parameter regardless of the rule's default, or of any possible profile setting.
 [More metadata](https://github.com/ComplianceAsCode/content/tree/master/tests#scenarios-format) are supported.
 
-Let's look a completely different scenario [missing.fail.sh](https://github.com/ComplianceAsCode/content/blob/master/linux_os/guide/system/bootloader-grub2/non-uefi/grub2_password/tests/missing.fail.sh) - for the [grub2_password](https://github.com/ComplianceAsCode/content/tree/master/linux_os/guide/system/bootloader-grub2/non-uefi/grub2_password) rule - let's check its contents:
+Let's look at a completely different scenario [missing.fail.sh](https://github.com/ComplianceAsCode/content/blob/master/linux_os/guide/system/bootloader-grub2/non-uefi/grub2_password/tests/missing.fail.sh) - for the [grub2_password](https://github.com/ComplianceAsCode/content/tree/master/linux_os/guide/system/bootloader-grub2/non-uefi/grub2_password) rule - and check its contents:
 
 - There is a `# remediation = none` metadata directive - that one is useful if the rule doesn't have a remediation.
 In that case, the test suite is satisfied enough just after the expected failure occurs.
@@ -159,7 +159,7 @@ This type of test just runs the scan with remediations if needed (i.e. no scenar
 The test suite can also operate in combined mode that combines the profile test with rule tests - in that case, every rule in a profile is tested thoroughly using its test scenarios.
 
 Although the container backend is very convenient, it's not the best representation of a system.
-A virtual machine feels much closer to the bare-metal, and the test suite supports the `libvirt` backend, which leverages all those snapshots and VM control capabilities of `libvirt` to execute tests.
+A virtual machine feels much closer to the bare-metal, and the test suite supports the `libvirt` backend which leverages VM control capabilities of `libvirt` to execute tests.
 Setting up a VM that works well with the test suite is not trivial, and we have the [install_vm](https://github.com/ComplianceAsCode/content/blob/master/tests/install_vm.py) script that is capable to assist with that.
 
 So there is a material for another blog posts - dear readers, let us know what would you like to read about!
