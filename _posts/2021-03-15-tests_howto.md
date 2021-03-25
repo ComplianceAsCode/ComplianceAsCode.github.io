@@ -1,5 +1,9 @@
-Testing of rules and remediations
-=================================
+---
+layout: post
+title: "Testing Rules and Remediations"
+categories: template
+author: Matěj Týč
+---
 
 How do we make sure that rules in the ComplianceAsCode repository are correct?
 Before we answer that, let's take a look at the big picture.
