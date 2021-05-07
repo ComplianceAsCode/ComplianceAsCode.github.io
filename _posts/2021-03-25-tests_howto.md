@@ -164,3 +164,12 @@ Setting up a VM that works well with the test suite is not trivial, and we have 
 
 So there is plenty of material for other blog posts covering this topic -- dear readers, let us know what would you like to read about!
 It's never too late to use either the [mailing list at scap-security-guide@lists.fedorahosted.org](https://lists.fedorahosted.org/admin/lists/scap-security-guide.lists.fedorahosted.org/), the [Github discussion forum](https://github.com/ComplianceAsCode/content/discussions), or the comments section of this website to provide feedback, and ask for more.
+
+---
+**NOTE**
+
+If you use `podman>=2.1,<3.0` then those podman versions suffer from https://github.com/containers/podman/issues/8444 which crashes the test suite.
+You can identify this problem by checking out whether "ssh port" or "container port" appear in the traceback.
+If it is the case, see what you can do to update podman to get rid of this issue. 
+
+---
