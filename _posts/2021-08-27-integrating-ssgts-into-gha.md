@@ -7,8 +7,8 @@ author: Gabriel Becker
 
 ### Introduction
 
-As described in [Testing Rules and Remediations]({% post_url 2021-03-25-tests_howto %}), the SSG Test Suite is a tool that
-is able to verify that a check passes or fails as expected on a given system. It was initially created to be run locally but as CI systems got more and more sophisticated, it become natural to integrate the Test Suite into GitHub Actions as it provides almost unlimited resources for public Organizations for free.
+As described in [Testing Rules and Remediations]({% post_url 2021-03-25-tests_howto %}), the SSG Test Suite (SSGTS) is a tool that
+is able to verify that a check passes or fails as expected on a given system. It was initially created to be run locally but as CI systems got more and more sophisticated, it become natural to integrate the Test Suite into GitHub Actions as it provides almost unlimited resources for public organizations for free.
 
 
 ### Github Actions
@@ -21,9 +21,8 @@ Github Actions is a platform that provides Continuous Integration/Continuous Dev
 This information allows to decide which rules should be tested by the automation. The tool also provides a human readable output that can be used to run tests locally. But this post approaches the machine readable format that is used the automation workflow.
 
 ### Integration
-Discourse about implementation of The integration
 
-In Github Actions, there is something called `workflow`. It defines a set of instructions that will be executed whenever an event happen, for example a new pull request is opened. For the integration, a new `workflow` [file](https://github.com/ComplianceAsCode/content/blob/master/.github/workflows/ssgts.yaml) has been created to integrate the SSGTS and CTF in order to enable tests to be automatically executed by Github Actions.
+In Github Actions, there is a concept called `workflow`. It defines a set of instructions that will be executed whenever an event happen, for example a new pull request is opened. For the integration, a new `workflow` [file](https://github.com/ComplianceAsCode/content/blob/master/.github/workflows/ssgts.yaml) has been created to integrate the SSGTS and CTF in order to enable tests to be automatically executed by Github Actions.
 
 This `workflow` defines the following actions:
 
@@ -35,7 +34,7 @@ This `workflow` defines the following actions:
 - Store log artifacts if tests fail.
   - These artifacts can be downloaded and inspected locally.
 
-Let's take a look at this examplary [pull request](https://github.com/ComplianceAsCode/content/pull/7478):
+Let's take a look at this exemplary [pull request](https://github.com/ComplianceAsCode/content/pull/7478):
 
 I edited the file [sshd_disable_compression/oval/shared.xml](https://github.com/ComplianceAsCode/content/blob/master/linux_os/guide/services/ssh/ssh_server/sshd_disable_compression/oval/shared.xml) and modified one of the regexes used for the OVAL check for demonstration purposes.
 
@@ -65,7 +64,7 @@ If any of the tests would fail, log artifacts can be downloaded and investigated
 
 ### Known Issues
 
-The Content Test Filtering tool currently has some limitations. For example, it doesn't report a brand new rule introduced by the PR, nor when a test scenario is modified. These issues are being reported in the [issues page](https://github.com/mildas/content-test-filtering/issues )and will be eventually fixed.
+The Content Test Filtering tool currently has some limitations. For example, it doesn't report a brand new rule introduced by the PR, nor when a test scenario is modified. These issues are being reported in the [issues page](https://github.com/mildas/content-test-filtering/issues) and will be eventually fixed.
 
 Rules that require services do not play well with container so it will always fail. The solution is to use virtual machines, but this means supporting our own worker instances in Github Actions and this is not planned at the moment.
 
