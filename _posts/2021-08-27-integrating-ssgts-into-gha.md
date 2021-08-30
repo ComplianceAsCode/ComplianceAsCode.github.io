@@ -8,7 +8,7 @@ author: Gabriel Becker
 ### Introduction
 
 As described in [Testing Rules and Remediations]({% post_url 2021-03-25-tests_howto %}), the SSG Test Suite (SSGTS) is a tool that
-is able to verify that a check passes or fails as expected on a given system. It was initially created to be run locally but as CI systems got more and more sophisticated, it become natural to integrate the Test Suite into GitHub Actions as it provides almost unlimited resources for public organizations for free.
+is able to verify that a check passes or fails as expected on a given system. It was initially created to be run locally but as CI systems got more and more sophisticated, it become natural to integrate the Test Suite into GitHub Actions as it provides almost unlimited resources for public organizations for free. Now every pull request submitted to the project is tested automatically and results from test scenarios can be used during development and reviewing processes.
 
 
 ### Github Actions
