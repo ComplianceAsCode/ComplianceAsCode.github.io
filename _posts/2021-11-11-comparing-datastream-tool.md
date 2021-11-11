@@ -7,13 +7,21 @@ author: Gabriel Becker
 
 ## Comparing Datastream Tool
 
-Datastream files are usually big XML files that are meant to be processed by machines. When humans have to take a peek into it and see what's going on, it can get frustrating really fast. The ComplianceAsCode/content project aims for more abstracted ways of dealing with SCAP standard which helps developers creating content. But in the end, datastream files are generated and one change made to a particular file may be only reflected in this final artifact. If you want to make sure that your change was actually propagated in the right way, you may have to look at those big XML files.
+Datastream files are usually big XML files that are meant to be processed by machines.
+When humans have to take a peek into it and see what's going on, it can get frustrating really fast.
+The ComplianceAsCode/content project aims for more abstracted ways of dealing with SCAP standard which helps developers creating content.
+But in the end, datastream files are generated and one change made to a particular file may be only reflected in this final artifact.
+If you want to make sure that your change was actually propagated in the right way, you may have to look at those big XML files.
 
-The compare_ds.py is a tool written in Python that is able to compare two datastream files in a smart way partially solving this problem. The tool is able to parse datastream files and extract relevant information for the end user. This information can then be compared with a different version of the datastream providing informatino on what exactly has changed between these two versions.
+The compare_ds.py is a tool written in Python that is able to compare two datastream files in a smart way partially solving this problem.
+The tool is able to parse datastream files and extract relevant information for the end user.
+This information can then be compared with a different version of the datastream providing information on what exactly has changed between these two versions.
 
 ### How to Run the Comparing Tool
 
-First you have to generate two datastream files. You can generate them using the usual `./build_product <product>` command, then copy the datastream to a different folder (since `./build_product` removes everything from `build` directory every time it gets executed). When you have both artifacts in place you can run (from project's root directory):
+First you have to generate two datastream files. You can generate them using the usual `./build_product <product>` command,
+then copy the datastream to a different folder (since `./build_product` removes everything from `build` directory every time it gets executed).
+When you have both artifacts in place you can run (from project's root directory):
 
 `$ utils/compare_ds.py <old_datastream> <new_datastream>`
 
@@ -67,46 +75,52 @@ ansible remediation for rule 'xccdf_org.ssgproject.content_rule_sshd_enable_stri
  validate: /usr/sbin/sshd -t -f %s
 ```
 
-These are the Ansible and Bash snippets present in the datastream files. As you can see, a simple
-change can propagate to many different places. OVAL checks were also changed between these datastream files
+These are the Ansible and Bash snippets present in the datastream files.
+As you can see, a simple change can propagate to many different places.
+OVAL checks were also changed between these datastream files
 but the tool does not support this kind of comparison at this moment.
 
 One of the main ideas of this tool is to answer the question:
 
   * Am I making any undesired changes to the content?
 
-In such a complex project that involves many aspects, any tool that supports identifying potential problems is
-worth the investment.
+In such a complex project that involves many aspects,
+any tool that supports identifying potential problems is worth the investment.
 
 ## Integrating with Github Actions
 
-While this tool can be used locally for comparing two different built datastreams, its full potential 
-is actually turning it into a service that runs on every Pull Request proposed to the project. This way,
-Pull Request reviewers can easily review differences and act upon.
+While this tool can be used locally for comparing two different built datastreams,
+its full potential can be unleashed by turning it into a service that runs on every Pull Request proposed to the project.
+This way, Pull Request reviewers can easily review differences and act upon.
 
-Based on this premise, we have introduced a new Github Action Job that runs on a Pull Request, generates two datastream files,
-one from current main branch and one containing the changes proposed by the Pull Request. With these two files, it runs the
-`compare_ds.py` tool producing an output that contains the differences between them. The job also takes advantage of [Content Test Filtering](https://github.com/mildas/content-test-filtering) tool to detect which product it should build based on what are the changes in the Pull Request similarly as it's described in [SSGTS GH Actions](https://complianceascode.github.io/template/2021/08/27/integrating-ssgts-into-gha.html).
+Based on this premise, we have introduced a new Github Action Job that runs on a Pull Request,
+generates two datastream files, one from current main branch and one containing the changes proposed by the Pull Request.
+With these two files, it runs the `compare_ds.py` tool producing an output that contains the differences between them.
+The job also takes advantage of [Content Test Filtering](https://github.com/mildas/content-test-filtering) tool to detect which product it should build based on what are the changes in the Pull Request similarly as it's described in [SSGTS GH Actions](https://complianceascode.github.io/template/2021/08/27/integrating-ssgts-into-gha.html).
 
 ### Automatically Posting a Comment on a Pull Request
 
-Sometimes it can get complicated to find log of test results in Github Actions, so the tool's output is posted as a comment in the original Pull Request and can be reviewed by anyone. This greatly increases the visibility of the service.
+Sometimes it can get complicated to find log of test results in Github Actions,
+so the tool's output is posted as a comment in the original Pull Request and it can be reviewed by anyone.
+This greatly increases the visibility of the service.
 
 The following picture is an example of a comment:
 
 ![Compare DS Output Example](/assets/images/compare_ds_example.png)
+*<center>Example of a comment containing the diff posted by a Github Bot</center>*
 
 Note: Every time the Pull Request is updated, the comment is replaced with the newest output.
 
 ## Limitations and Future Work
 
-There are some limitations on what the `compare_ds.py` can do, OVAL checks are not fully supported and
-not all remediation types are supported. Recently the tool has been expanded to detect differences in
-CPE changes, for example if a pull request restricts a rule to run only on containers, this change would
-be highlighted by the tool.
+There are some limitations on what the `compare_ds.py` can do,
+OVAL checks are not fully supported and not all remediation types are supported.
+Recently the tool has been expanded to detect differences in CPE changes,
+for example if a pull request restricts a rule to run only on containers,
+this change would be highlighted by the tool.
 
-Future updates to the tool should automatically reflect in the Github Actions Job, so if someone implement new
-features they will appear in the comments posted by the service.
+Future updates to the tool should automatically reflect in the Github Actions Job,
+so if someone implements new features they will appear in the comments posted by the service.
 
-This tool has great potential to help reviewers to speed up the review process and can also be used by developers
-to spot any mistake or undesired change to the content.
+This tool has great potential to help reviewers to speed up the review process 
+and it can also be used by developers to spot mistakes or undesired changes to the content.
