@@ -13,7 +13,7 @@ The ComplianceAsCode/content project aims for more abstracted ways of dealing wi
 But in the end, datastream files are generated and one change made to a particular file may be only reflected in this final artifact.
 If you want to make sure that your change was actually propagated in the right way, you may have to look at those big XML files.
 
-The compare_ds.py is a tool written in Python that is able to compare two datastream files in a smart way partially solving this problem.
+The [compare_ds.py](https://github.com/ComplianceAsCode/content/blob/master/utils/compare_ds.py) is a tool written in Python that is able to compare two datastream files in a smart way partially solving this problem.
 The tool is able to parse datastream files and extract relevant information for the end user.
 This information can then be compared with a different version of the datastream providing information on what exactly has changed between these two versions.
 
@@ -43,7 +43,6 @@ index 31968bc560a..b22e2046772 100644
 Would produce a similar diff output:
 
 ```diff
-Rule 'xccdf_org.ssgproject.content_rule_security_patches_up_to_date' points to 'security-data-oval-com.redhat.rhsa-RHEL8.xml' which isn't a part of the old datastream
 bash remediation for rule 'xccdf_org.ssgproject.content_rule_sshd_enable_strictmodes' differs:
 --- old datastream
 +++ new datastream
@@ -93,8 +92,8 @@ While this tool can be used locally for comparing two different built datastream
 its full potential can be unleashed by turning it into a service that runs on every Pull Request proposed to the project.
 This way, Pull Request reviewers can easily review differences and act upon.
 
-Based on this premise, we have introduced a new Github Action Job that runs on a Pull Request,
-generates two datastream files, one from current main branch and one containing the changes proposed by the Pull Request.
+Based on this premise, we have introduced a new [Github Action Job](https://github.com/ComplianceAsCode/content/blob/master/.github/workflows/compare-ds.yaml) that runs on a Pull Request.
+It generates two datastream files, one from current main branch and one containing the changes proposed by the Pull Request.
 With these two files, it runs the `compare_ds.py` tool producing an output that contains the differences between them.
 The job also takes advantage of [Content Test Filtering](https://github.com/mildas/content-test-filtering) tool to detect which product it should build based on what are the changes in the Pull Request similarly as it's described in [SSGTS GH Actions](https://complianceascode.github.io/template/2021/08/27/integrating-ssgts-into-gha.html).
 
@@ -106,10 +105,9 @@ This greatly increases the visibility of the service.
 
 The following picture is an example of a comment:
 
-![Compare DS Output Example](/assets/images/compare_ds_example.png)
-*<center>Example of a comment containing the diff posted by a Github Bot</center>*
+![Example of a comment diff posted by a Github Bot. The diff is similar to the one provided in the How to Run the Comparing Tool section](/assets/images/compare_ds_example.png)
 
-Note: Every time the Pull Request is updated, the comment is replaced with the newest output.
+**NOTE** Every time the Pull Request is updated, the comment is replaced with the newest output.
 
 ## Limitations and Future Work
 
