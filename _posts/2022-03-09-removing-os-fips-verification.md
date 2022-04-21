@@ -32,7 +32,7 @@ rule `installed_OS_is_FIPS_certified` or checking on official [NIST certified
 systems database](https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search).
 
 This change was done in
-[PR#8255](https://github.com/ComplianceAsCode/content/pull/8255) and will be
-available in the next release 0.1.61.
+[PR#8255](https://github.com/ComplianceAsCode/content/pull/8255) and is
+available since release 0.1.61.
 
 
