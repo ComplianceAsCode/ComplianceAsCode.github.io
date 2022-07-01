@@ -24,7 +24,7 @@ working test environment (The default option for the testing environment is Fedo
 ![Visual Studio Code running on a Gitpod Environment](/assets/images/gitpod_env.png)
 
 While reviewing pull requests in the project, a comment with a button will be displayed and it will
-will create an environment that contains the development environment plus the code of the particular
+create an environment that contains the development environment plus the code of the particular
 pull request. For example, see this [comment](https://github.com/ComplianceAsCode/content/pull/9072#issuecomment-1171045995):
 
 
