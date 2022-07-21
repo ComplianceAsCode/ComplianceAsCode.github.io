@@ -24,10 +24,10 @@ github_username: ComplianceAsCode
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: jekyll/minima
 plugins:
   - jekyll-feed
-
+  - jekyll-remote-theme
 disqus:
   shortname: complianceascode
 
