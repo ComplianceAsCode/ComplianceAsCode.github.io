@@ -19,13 +19,13 @@ To install Content Navigator you can either follow the instructions from [conten
 
 When the setup is done, open the ComplianceAsCode content folder on VSCode and you can start to use Content Navigator extension. If you right click on any opened file you should see something like:
 
-![image](/assets/images/right_click_menu_red_stroke.png)
+![image](/assets/img/right_click_menu_red_stroke.png)
 
 These features usually work when you have text selected or there is content stored in the clipboard. The extension will try to identify the content corresponding to the provided text and will open the correct file if a match is found.
 
 So let's say you open the file `rhel8/profiles/ospp.profile` and select the text `enable_fips_mode`, by activating the option `Open Rule` from the right click menu, the corresponding `rule.yml` file should be opened similar to the following:
 
-![image](/assets/images/open_rule_enable_fips_mode.gif)
+![image](/assets/img/open_rule_enable_fips_mode.gif)
 
 The same is valid to other kinds of content, OVAL checks, Bash remediation, etc. If the content exists it will open the corresponding file based on the requested option.
 
@@ -47,7 +47,7 @@ Note that the extension also supports navigating between content corresponding t
 Code snippets is a great feature provided by VSCode and allows you to reduce boilerplate work and increase productivity. Content Navigator provides code snippets for Compliance As Code content project. Currently, the main focus is the templating system where all available templates are supported. The new templating system mechanism, which is described in this [blog post]({% post_url 2019-10-16-new-templating-system %}), allows you to use a template by simply adding a few lines to the `rule.yml` file. But the question is, which template should I use and which parameters I can use to fine tune the template? Code snippets can help you in this situation, the following image illustrates the situation:
 
 
-![image](/assets/images/code_snippets_template.gif)
+![image](/assets/img/code_snippets_template.gif)
 
 Note that a skeleton of the template is made and each part contains the official documentation describing its purpose and which values it takes. To activate the box with available templates simply press `Ctrl+Space` when editing a `rule.yml` file.
 
