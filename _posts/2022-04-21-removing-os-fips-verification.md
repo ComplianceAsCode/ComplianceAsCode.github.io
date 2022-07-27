@@ -3,6 +3,7 @@ layout: post
 title: "Removing the OS FIPS Certified Verification from the Enable FIPS Mode rule"
 categories: template
 author: Gabriel Becker
+img: thumbnail/enable_fips_mode.png
 ---
 
 

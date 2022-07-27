@@ -3,6 +3,7 @@ layout: post
 title: "Visualising the results of complex security rules using oval-graph tool"
 categories: template
 author: Jan Rodák
+img: thumbnail/oval_graph.png
 ---
 
 ## Introduction

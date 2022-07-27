@@ -3,6 +3,7 @@ layout: post
 title: "Content Navigator - A Visual Studio Code Extension to Help Users to create Security Content"
 categories: template
 author: Gabriel Becker
+img: thumbnail/content_navigator.png
 ---
 
 In [ComplianceAsCode content project](https://github.com/ComplianceAsCode/content/), there are hundreds of rules (to be exact 1617 of them as per 2019-12-19) which are shared among many products and each rule can contain different content, for example, remediation (eg. Bash, Ansible, Anaconda, etc.) and [OVAL](https://oval.mitre.org/) checks. If you are not familiarized with the structure of the project it might be hard to navigate between those files. [Content Navigator](https://github.com/ggbecker/content-navigator/) is a Visual Studio Code Extension which helps the user to navigate between content providing shortcuts and additionally provides content awareness through auto completion of existing rules while editing profiles and code snippets which contain stubs for content such as fields required when creating a new rule and also available templates.

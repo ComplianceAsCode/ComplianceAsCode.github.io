@@ -3,6 +3,7 @@ layout: post
 title: "Stay on Top of Your Profile"
 categories: template
 author: Matěj Týč
+img: thumbnail/profile.png
 ---
 
 # Stay on Top of Your Profile
