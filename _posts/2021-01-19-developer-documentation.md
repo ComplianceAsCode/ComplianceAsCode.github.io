@@ -3,7 +3,6 @@ layout: post
 title: "Hosting the Developer Documentation on ReadTheDocs.org"
 categories: template
 author: Gabriel Becker
-img: thumbnail/readthedocs.png
 ---
 
 ### Introduction

@@ -3,7 +3,6 @@ layout: post
 title: "Turning the Comparing Datastream Tool into a Service"
 categories: template
 author: Gabriel Becker
-img: thumbnail/compare_ds_example.png
 ---
 
 ## Comparing Datastream Tool

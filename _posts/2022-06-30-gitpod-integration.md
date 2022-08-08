@@ -4,7 +4,6 @@ title: "Integration of Gitpod.io with ComplianceAsCode/content project"
 categories: template
 author: Gabriel Becker
 author_url: https://github.com/ggbecker
-img: thumbnail/gitpod_thumbnail.png
 ---
 
 ## Introduction

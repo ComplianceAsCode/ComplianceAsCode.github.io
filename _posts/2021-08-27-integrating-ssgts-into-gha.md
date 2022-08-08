@@ -3,7 +3,6 @@ layout: post
 title: "Integrating The SSG Test Suite into GitHub Actions"
 categories: template
 author: Gabriel Becker
-img: thumbnail/automatus.png
 
 ---
 

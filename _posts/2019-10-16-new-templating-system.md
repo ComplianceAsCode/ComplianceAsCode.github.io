@@ -3,7 +3,6 @@ layout: post
 title: "Simplifying templates in ComplianceAsCode"
 categories: template
 author: Jan Černý
-img: thumbnail/template.png
 ---
 In ComplianceAsCode content project, there are many similar rules. But we don’t like to duplicate code and we discourage copy-pasting. Instead, we prefer to generate content (e.g: OVAL, Ansible, Bash, etc.) using templates. Lately, we have changed the way these templates work. This change made using templates easier for the content authors.
 

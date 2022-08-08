@@ -3,7 +3,6 @@ layout: post
 title: "Testing Rules and Remediations"
 categories: template
 author: Matěj Týč
-img: thumbnail/tests.png
 ---
 
 How do we make sure that rules in the ComplianceAsCode repository are correct?
