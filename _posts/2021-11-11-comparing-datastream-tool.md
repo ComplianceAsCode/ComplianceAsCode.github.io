@@ -105,7 +105,7 @@ This greatly increases the visibility of the service.
 
 The following picture is an example of a comment:
 
-![Example of a comment diff posted by a Github Bot. The diff is similar to the one provided in the How to Run the Comparing Tool section](/assets/images/compare_ds_example.png)
+![Example of a comment diff posted by a Github Bot. The diff is similar to the one provided in the How to Run the Comparing Tool section](/assets/img/compare_ds_example.png)
 
 **NOTE** Every time the Pull Request is updated, the comment is replaced with the newest output.
 

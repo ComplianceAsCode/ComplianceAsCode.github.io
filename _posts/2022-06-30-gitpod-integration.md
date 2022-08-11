@@ -3,6 +3,7 @@ layout: post
 title: "Integration of Gitpod.io with ComplianceAsCode/content project"
 categories: template
 author: Gabriel Becker
+author_url: https://github.com/ggbecker
 ---
 
 ## Introduction
@@ -21,14 +22,14 @@ working test environment (The default option for the testing environment is Fedo
 [https://gitpod.io/#https://github.com/ComplianceAsCode/content](https://gitpod.io/#https://github.com/ComplianceAsCode/content)
 
 
-![Visual Studio Code running on a Gitpod Environment](/assets/images/gitpod_env.png)
-
+![Visual Studio Code running on a Gitpod Environment](/assets/img/gitpod_env.png)
+\
 While reviewing pull requests in the project, a comment with a button will be displayed and it will
 create an environment that contains the development environment plus the code of the particular
 pull request. For example, see this [comment](https://github.com/ComplianceAsCode/content/pull/9072#issuecomment-1171045995):
 
 
-![Comment on a Pull Request containing links that create Gitpod Environments with different parameters](/assets/images/gitpod_pr_comment.png)
+![Comment on a Pull Request containing links that create Gitpod Environments with different parameters](/assets/img/gitpod_pr_comment.png)
 
 
 ## Testing Environment

@@ -3,6 +3,7 @@ layout: post
 title: "Integrating The SSG Test Suite into GitHub Actions"
 categories: template
 author: Gabriel Becker
+
 ---
 
 ### Introduction
@@ -38,17 +39,17 @@ Let's take a look at this exemplary [pull request](https://github.com/Compliance
 
 I edited the file [sshd_disable_compression/oval/shared.xml](https://github.com/ComplianceAsCode/content/blob/master/linux_os/guide/services/ssh/ssh_server/sshd_disable_compression/oval/shared.xml) and modified one of the regexes used for the OVAL check for demonstration purposes.
 
-![OVAL Check Modification](/assets/images/ssgts_gha/oval_check_modified.png)
+![OVAL Check Modification](/assets/img/ssgts_gha/oval_check_modified.png)
 
 This modification will make the CTF identify that this rule needs to be tested, because it's check has changed and tests must be executed in order to confirm that no regressions were introduced.
 
 The details of the `workflow` can be found in the checks section in the Pull Request's page or in the [checks tab](https://github.com/ComplianceAsCode/content/runs/3443824562?check_suite_focus=true):
 
-![Check Status](/assets/images/ssgts_gha/check_status.png)
+![Check Status](/assets/img/ssgts_gha/check_status.png)
 
 When you go into details, you see the following task, it contains the output of CTF:
 
-![CTF Output](/assets/images/ssgts_gha/ctf_output.png)
+![CTF Output](/assets/img/ssgts_gha/ctf_output.png)
 
 In this case it has detected that the rule `sshd_disable_compression` needs to be tested using the product `rhel8`. Both remediation types also need to be tested because it's a change to the OVAL check, so both remediations should be run to verify that they are still aligned with the check.
 
@@ -56,11 +57,11 @@ Note: The `sshd_disable_compression` is applicable to many products, but CTF usu
 
 Then, further down in the `workflow` you can find tests being run:
 
-![Run Tests and Remediate with Bash](/assets/images/ssgts_gha/tests_bash.png)
+![Run Tests and Remediate with Bash](/assets/img/ssgts_gha/tests_bash.png)
 
 If any of the tests would fail, log artifacts can be downloaded and investigated locally, for example:
 
-![Logs](/assets/images/ssgts_gha/logs.png)
+![Logs](/assets/img/ssgts_gha/logs.png)
 
 ### Known Issues
 
