@@ -52,7 +52,7 @@ It is possible to generate HTML report from the JSON file, and it is also possib
 ### Fedora (EPEL)
 
 ```bash
-dnf instal oval-graph
+dnf install oval-graph
 ```
 
 ### Any OS - use PyPi
