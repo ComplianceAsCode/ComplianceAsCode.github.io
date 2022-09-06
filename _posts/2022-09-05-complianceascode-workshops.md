@@ -35,6 +35,6 @@ Although, following the intended order is still advised.
 
 ## Feedback is Always Welcomed
 
-If you find any issues with the workshop, feel free to create an issue on this [page](https://github.com/ComplianceAsCode/content/issues).
+If you find any issues with the workshop, feel free to create an issue on [GitHub issues tracker](https://github.com/ComplianceAsCode/content/issues).
 
-Any suggestions on how to improve or new ideas for exercises you can submit in a form of discussion on this [page](https://github.com/ComplianceAsCode/content/discussions).
+Any suggestions on how to improve or new ideas for exercises you can submit in a form of discussion on [GitHub discussions](https://github.com/ComplianceAsCode/content/discussions).
