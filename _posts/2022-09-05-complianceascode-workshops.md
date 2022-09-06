@@ -30,8 +30,8 @@ Select the exercise you want to do, click the link to spin up the environment, w
 
 Then you can start following the documentation of that specific exercise and running commands on your web browser environment.
 
-The exercises have a thought learning structure, but you can definitely do them in any order as they do not have any dependencies with each other,
-apart from concepts introduced that help you build the knowledge.
+Exercises are independent from each other, so feel free to do it in any order.
+Although, following the intended order is still advised.
 
 ## Feedback is Always Welcomed
 
