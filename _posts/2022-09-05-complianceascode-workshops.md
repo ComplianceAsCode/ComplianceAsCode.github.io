@@ -8,6 +8,8 @@ author_url: https://github.com/ggbecker
 
 ## Introduction
 
+<form action="https://github.com/ComplianceAsCode/content/blob/master/docs/workshop/README.adoc" method="get" target="_blank"><button type="submit">TL;DR: Go to Workshops</button></form>
+
 It's with great pleasure to announce that we have ported ComplianceAsCode/content workshops into our main [repository](https://github.com/ComplianceAsCode/content). These workshops have been delivered
 across conferences such as Red Hat Summit and [Devconf.cz](https://devconfcz2021.sched.com/event/gmSq/creating-content-for-automated-security-compliance) ([Youtube video](https://www.youtube.com/watch?v=1bE-X2YBrNk)) for example.
 
