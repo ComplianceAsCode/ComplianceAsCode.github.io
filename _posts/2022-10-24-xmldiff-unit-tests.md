@@ -19,7 +19,7 @@ An example of this is below:
 def test_group_to_xml_element(group_selinux):
     group_el = group_selinux.to_xml_element()
     assert group_el is not None
-    assert group_el.tag == "{%s}Group" % XCCDF12_NS
+    assert group_el.tag == {% raw %} "{%s}Group" % XCCDF12_NS {% endraw %}
     assert len(group_el.attrib) == 1
     assert group_el.get("id") == "xccdf_org.ssgproject.content_group_selinux"
     assert group_el.text is None
