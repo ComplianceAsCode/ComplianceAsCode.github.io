@@ -80,7 +80,7 @@ GEM
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
-    webrick (1.7.0)
+    webrick (1.8.0)
 
 PLATFORMS
   x86_64-linux
@@ -90,7 +90,7 @@ DEPENDENCIES
   jekyll-paginate
   jekyll-sitemap
   jemoji
-  webrick (~> 1.7)
+  webrick (~> 1.8)
 
 BUNDLED WITH
    2.3.7
