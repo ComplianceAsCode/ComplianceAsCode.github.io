@@ -53,10 +53,10 @@ The outcome is that when the generated SCAP source data stream is evaluated by O
 Therefore, the user won't receive any false positive about UEFI misconfiguration in his report.
 Moreover, if the Bash or Ansible remediations of this rule are executed on such system, they won't do any action because they will be wrapped in an applicability check as well.
 
-In our example, adding the `platform: uefi` line to the `rule.yml` file will cause that the generated XCCDF rule in the built SCAP source data stream will contain an `<xccdf-1.2:platform>` element which references a CPE item `cpe:/a:uefi` which references a OVAL check `system_boot_mode_is_uefi`.
+In our example, adding the `platform: uefi` line to the `rule.yml` file will cause that the generated XCCDF rule in the built SCAP source data stream will contain an `<xccdf-1.2:platform>` element which references a CPE item `cpe:/a:uefi` which references an OVAL check `system_boot_mode_is_uefi`.
 This check is defined in the `/shared/applicability/oval` directory.
 Moreover, the Bash remediation will be wrapped by the condition specified in the `bash_conditional` key.
-Similarly, the Ansible task will be extended by a when statement containing the condition specified in the `ansible_conditional` key.
+Similarly, the Ansible task will be extended by a `when` statement containing the condition specified in the `ansible_conditional` key.
 
 There exist multiple useful platforms in the ComplianceAsCode repository that are based on architecture, presence of files or packages, containers, partitions and they are used in many rules across multiple products.
 
@@ -66,9 +66,9 @@ The basic platform definitions are available for content authors for quite some 
 
 The first improvement that we made is that platform definitions can be now templated.
 This is convenient for adding platforms that differ only in their parameter.
-We already have 3 templated platforms ready to use in the project: `package`, `linux_os` and `partition`.
+We already have three templated platforms ready to use in the project: `package`, `linux_os` and `partition`.
 
-For example, to limit the rule applicability to systems where sudo is installed, add the following platform definition to the `rule.yml` of your rule:
+For example, to limit the rule applicability to systems where `sudo` is installed, add the following platform definition to the `rule.yml` of your rule:
 
 ```
 platform: package[sudo]
@@ -122,9 +122,9 @@ platform: os_linux[rhel]>=8.6
 
 If the first platform definition is used in a rule, the rule will be applicable if the package usbguard is installed and is newer than 2.0.
 It will check RPM packages on RPM systems and DEB packages on Debian systems.
-The second platform will be true on RHEL 8.6 and newer, and the evaluation will be based on reading `/etc/os-release`.
+The second platform will be true on RHEL 8.6 and newer, and the evaluation will be based on reading data from the following file: `/etc/os-release`.
 
-At the first sight, it looks like that the `package` platform is the go-to platform that will be used in most cases.
+At first sight, it looks like that the `package` platform is the go-to platform that will be used in most cases.
 But in general, we recommend to derive rule applicability from operating system release version instead of basing that on a version of a specific package.
 The reason is that in Linux distributions such as RHEL the features and fixes often get backported to older versions, so the actual feature set might not correspond to the upstream version of the project, but rather depend on the actual contents of the currently shipped package in the given Linux distribution.
 Therefore, the package versioned platform might not work or can differ in different distributions.
@@ -138,7 +138,7 @@ For example, upstream package `foo` version `1.2.3` can be packaged in RHEL 8 as
 The recently introduced support for CPE applicability language allows content authors to combine multiple platforms into complex platform expression using logical operators.
 You can use the common operators (and, or, not, ...) and parenthesis.
 
-Imagine that your rule should be applicable only on non-containerized systems that have either chrony or ntp package installed.
+Imagine that your rule should be applicable only on non-containerized systems that have either `chrony` or `ntp` package installed.
 You can now simply write the following into the `rule.yml` of that rule and the build system will generate the applicability check code for you and will insert it to the rule.
 
 ```
