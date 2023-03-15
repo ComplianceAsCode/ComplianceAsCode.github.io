@@ -17,7 +17,7 @@ They are now much simpler to setup and you can do that only with the push of a b
 
 They are a great starting point for newcomers to the project, but they can also teach experts new things.
 
-The workshops take advantage of the [`gitpod.io`](https://www.gitpod.io/) integration (see this [blogpost]([blogpost](https://complianceascode.github.io/template/2022/06/30/gitpod-integration.html)) for more details),
+The workshops take advantage of the [`gitpod.io`](https://www.gitpod.io/) integration (see this [blogpost](https://complianceascode.github.io/template/2022/06/30/gitpod-integration.html) for more details),
 so you are only required to have a GitHub account to be able to spin up a fully working workshop environment on you web browser.
 
 ## How to Access the Workshops
