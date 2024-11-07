@@ -12,7 +12,7 @@ jobs:
             image: fedora:latest
         steps:
             -   name: Install Dependencies
-                run: dnf install -y ruby rubygem-bundler ruby-devel libffi libffi-devel @"Development Tools" gcc-c++
+                run: dnf install -y ruby rubygem-bundler ruby-devel libffi libffi-devel @"development-tools" gcc-c++
             -   name: Checkout
                 uses: actions/checkout@v4
             -   name: Install Ruby Dependencies
